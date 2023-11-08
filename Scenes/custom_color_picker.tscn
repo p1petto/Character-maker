@@ -6,7 +6,6 @@
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_3wxpe"]
 shader = ExtResource("1_mox7f")
-shader_parameter/blue = 1.0
 shader_parameter/oldcolor1 = Color(0.780392, 0.780392, 0.780392, 1)
 shader_parameter/oldcolor2 = Color(0.192157, 0.192157, 0.192157, 1)
 shader_parameter/oldcolor3 = Color(0.396078, 0.396078, 0.396078, 1)
