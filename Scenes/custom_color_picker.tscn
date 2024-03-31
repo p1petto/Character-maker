@@ -1,17 +1,82 @@
-[gd_scene load_steps=14 format=3 uid="uid://bfcphxa42tny2"]
+[gd_scene load_steps=17 format=3 uid="uid://bfcphxa42tny2"]
 
-[ext_resource type="Shader" path="res://Shader/custom_color_picker.gdshader" id="1_mox7f"]
 [ext_resource type="Texture2D" uid="uid://p6tehafnukq0" path="res://Sprites/FemDownIdle.png" id="2_iwkxb"]
 [ext_resource type="Script" path="res://Scripts/AnimatedSprite2D.gd" id="3_5trcp"]
+[ext_resource type="Script" path="res://Scripts/ButtonColor.gd" id="5_553nq"]
+
+[sub_resource type="Shader" id="Shader_7k4lf"]
+code = "shader_type canvas_item;
+uniform vec4 oldcolor1 : source_color;
+uniform vec4 oldcolor2 : source_color;
+uniform vec4 oldcolor3 : source_color;
+uniform vec4 oldcolor4 : source_color;
+uniform vec4 oldcolor5 : source_color;
+
+uniform vec4 newcolor1 : source_color;
+uniform vec4 newcolor2 : source_color;
+uniform vec4 newcolor3 : source_color;
+uniform vec4 newcolor4 : source_color;
+uniform vec4 newcolor5 : source_color;
+
+
+void fragment() {
+	float r = 0.0;
+	float g = 0.0;
+	float b = 0.0;
+		
+    if(distance(COLOR, oldcolor1) < 0.1){
+        COLOR = newcolor1;
+	}
+	if(distance(COLOR, oldcolor2) < 0.1)
+	{
+		r = (COLOR.r - newcolor1.r) * 0.6 + newcolor1.r;
+		g = (COLOR.g - newcolor1.g) * 0.6 + newcolor1.g;
+		b = (COLOR.b - newcolor1.b) * 0.6 + newcolor1.b;
+		COLOR.r = r;
+		COLOR.g = g;
+		COLOR.b = b;
+    }
+	if(distance(COLOR, oldcolor3) < 0.1)
+	{
+		r = (COLOR.r - newcolor1.r) * 0.6 + newcolor1.r;
+		g = (COLOR.g - newcolor1.g) * 0.6 + newcolor1.g;
+		b = (COLOR.b - newcolor1.b) * 0.6 + newcolor1.b;
+		COLOR.r = r;
+		COLOR.g = g;
+		COLOR.b = b;
+    }
+	if(distance(COLOR, oldcolor4) < 0.1)
+	{
+		r = (COLOR.r - newcolor1.r) * 0.6 + newcolor1.r;
+		g = (COLOR.g - newcolor1.g) * 0.6 + newcolor1.g;
+		b = (COLOR.b - newcolor1.b) * 0.6 + newcolor1.b;
+		COLOR.r = r;
+		COLOR.g = g;
+		COLOR.b = b;
+    }
+	if(distance(COLOR, oldcolor5) < 0.1)
+	{
+		r = (COLOR.r - newcolor1.r) * 0.6 + newcolor1.r;
+		g = (COLOR.g - newcolor1.g) * 0.6 + newcolor1.g;
+		b = (COLOR.b - newcolor1.b) * 0.6 + newcolor1.b;
+		COLOR.r = r;
+		COLOR.g = g;
+		COLOR.b = b;
+    }
+}"
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_3wxpe"]
-shader = ExtResource("1_mox7f")
+shader = SubResource("Shader_7k4lf")
 shader_parameter/oldcolor1 = Color(0.780392, 0.780392, 0.780392, 1)
 shader_parameter/oldcolor2 = Color(0.192157, 0.192157, 0.192157, 1)
 shader_parameter/oldcolor3 = Color(0.396078, 0.396078, 0.396078, 1)
+shader_parameter/oldcolor4 = Color(0.278431, 0.278431, 0.278431, 1)
+shader_parameter/oldcolor5 = Color(0.494118, 0.494118, 0.494118, 1)
 shader_parameter/newcolor1 = Color(0.780392, 0.780392, 0.780392, 1)
 shader_parameter/newcolor2 = Color(0.192157, 0.192157, 0.192157, 1)
 shader_parameter/newcolor3 = Color(0.396078, 0.396078, 0.396078, 1)
+shader_parameter/newcolor4 = Color(0.278431, 0.278431, 0.278431, 1)
+shader_parameter/newcolor5 = Color(0.494118, 0.494118, 0.494118, 1)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_7akx1"]
 atlas = ExtResource("2_iwkxb")
@@ -77,12 +142,18 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="Theme" id="Theme_dexsy"]
+Button/styles/normal = null
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4nai1"]
+bg_color = Color(0.780392, 0.780392, 0.780392, 1)
+
 [node name="CustomColorPicker" type="Node2D"]
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 3
 material = SubResource("ShaderMaterial_3wxpe")
-position = Vector2(786, 249)
+position = Vector2(592, 349)
 scale = Vector2(9, 9)
 sprite_frames = SubResource("SpriteFrames_mniv8")
 autoplay = "default"
@@ -90,6 +161,7 @@ frame_progress = 0.0683871
 script = ExtResource("3_5trcp")
 
 [node name="ColorPickerButton" type="ColorPickerButton" parent="."]
+visible = false
 offset_left = 208.0
 offset_top = 215.0
 offset_right = 467.0
@@ -97,6 +169,7 @@ offset_bottom = 267.0
 color = Color(0.780392, 0.780392, 0.780392, 1)
 
 [node name="ColorPickerButton2" type="ColorPickerButton" parent="."]
+visible = false
 offset_left = 208.0
 offset_top = 293.0
 offset_right = 467.0
@@ -104,12 +177,42 @@ offset_bottom = 345.0
 color = Color(0.192157, 0.192157, 0.192157, 1)
 
 [node name="ColorPickerButton3" type="ColorPickerButton" parent="."]
+visible = false
 offset_left = 208.0
 offset_top = 374.0
 offset_right = 467.0
 offset_bottom = 426.0
 color = Color(0.396078, 0.396078, 0.396078, 1)
 
+[node name="Button" type="Button" parent="."]
+offset_left = 125.0
+offset_top = 405.0
+offset_right = 232.0
+offset_bottom = 464.0
+theme = SubResource("Theme_dexsy")
+theme_override_styles/normal = SubResource("StyleBoxFlat_4nai1")
+script = ExtResource("5_553nq")
+metadata/_edit_use_anchors_ = true
+
+[node name="ColorPicker" type="ColorPicker" parent="Button"]
+visible = false
+layout_mode = 0
+offset_left = 182.0
+offset_top = -196.0
+offset_right = 480.0
+offset_bottom = 345.0
+edit_alpha = false
+picker_shape = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="Button2" type="Button" parent="."]
+offset_right = 8.0
+offset_bottom = 8.0
+metadata/_edit_use_anchors_ = true
+
 [connection signal="color_changed" from="ColorPickerButton" to="AnimatedSprite2D" method="_on_color_picker_button_color_changed"]
 [connection signal="color_changed" from="ColorPickerButton2" to="AnimatedSprite2D" method="_on_color_picker_button_2_color_changed"]
 [connection signal="color_changed" from="ColorPickerButton3" to="AnimatedSprite2D" method="_on_color_picker_button_3_color_changed"]
+[connection signal="pressed" from="Button" to="Button" method="_on_pressed"]
+[connection signal="color_changed" from="Button/ColorPicker" to="AnimatedSprite2D" method="_on_color_picker_color_changed"]
+[connection signal="color_changed" from="Button/ColorPicker" to="Button" method="_on_color_picker_color_changed"]
