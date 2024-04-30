@@ -1,8 +1,16 @@
-[gd_scene load_steps=17 format=3 uid="uid://bfcphxa42tny2"]
+[gd_scene load_steps=20 format=3 uid="uid://bfcphxa42tny2"]
 
 [ext_resource type="Texture2D" uid="uid://p6tehafnukq0" path="res://Sprites/FemDownIdle.png" id="2_iwkxb"]
 [ext_resource type="Script" path="res://Scripts/AnimatedSprite2D.gd" id="3_5trcp"]
+[ext_resource type="Script" path="res://Scripts/ButtonSave.gd" id="4_gpdew"]
 [ext_resource type="Script" path="res://Scripts/ButtonColor.gd" id="5_553nq"]
+[ext_resource type="Script" path="res://Scripts/TextureRect.gd" id="5_xsigk"]
+
+[sub_resource type="Theme" id="Theme_dexsy"]
+Button/styles/normal = null
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4nai1"]
+bg_color = Color(0.780392, 0.780392, 0.780392, 1)
 
 [sub_resource type="Shader" id="Shader_7k4lf"]
 code = "shader_type canvas_item;
@@ -142,53 +150,26 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="Theme" id="Theme_dexsy"]
-Button/styles/normal = null
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4nai1"]
-bg_color = Color(0.780392, 0.780392, 0.780392, 1)
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_uwche"]
+shader = SubResource("Shader_7k4lf")
+shader_parameter/oldcolor1 = Color(0.780392, 0.780392, 0.780392, 1)
+shader_parameter/oldcolor2 = Color(0.192157, 0.192157, 0.192157, 1)
+shader_parameter/oldcolor3 = Color(0.396078, 0.396078, 0.396078, 1)
+shader_parameter/oldcolor4 = Color(0.278431, 0.278431, 0.278431, 1)
+shader_parameter/oldcolor5 = Color(0.494118, 0.494118, 0.494118, 1)
+shader_parameter/newcolor1 = Color(0.780392, 0.780392, 0.780392, 1)
+shader_parameter/newcolor2 = Color(0.192157, 0.192157, 0.192157, 1)
+shader_parameter/newcolor3 = Color(0.396078, 0.396078, 0.396078, 1)
+shader_parameter/newcolor4 = Color(0.278431, 0.278431, 0.278431, 1)
+shader_parameter/newcolor5 = Color(0.494118, 0.494118, 0.494118, 1)
 
 [node name="CustomColorPicker" type="Node2D"]
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-texture_filter = 3
-material = SubResource("ShaderMaterial_3wxpe")
-position = Vector2(592, 349)
-scale = Vector2(9, 9)
-sprite_frames = SubResource("SpriteFrames_mniv8")
-autoplay = "default"
-frame_progress = 0.0683871
-script = ExtResource("3_5trcp")
-
-[node name="ColorPickerButton" type="ColorPickerButton" parent="."]
-visible = false
-offset_left = 208.0
-offset_top = 215.0
-offset_right = 467.0
-offset_bottom = 267.0
-color = Color(0.780392, 0.780392, 0.780392, 1)
-
-[node name="ColorPickerButton2" type="ColorPickerButton" parent="."]
-visible = false
-offset_left = 208.0
-offset_top = 293.0
-offset_right = 467.0
-offset_bottom = 345.0
-color = Color(0.192157, 0.192157, 0.192157, 1)
-
-[node name="ColorPickerButton3" type="ColorPickerButton" parent="."]
-visible = false
-offset_left = 208.0
-offset_top = 374.0
-offset_right = 467.0
-offset_bottom = 426.0
-color = Color(0.396078, 0.396078, 0.396078, 1)
-
 [node name="Button" type="Button" parent="."]
-offset_left = 125.0
-offset_top = 405.0
-offset_right = 232.0
-offset_bottom = 464.0
+offset_left = 58.0
+offset_top = 334.0
+offset_right = 165.0
+offset_bottom = 393.0
 theme = SubResource("Theme_dexsy")
 theme_override_styles/normal = SubResource("StyleBoxFlat_4nai1")
 script = ExtResource("5_553nq")
@@ -196,7 +177,12 @@ metadata/_edit_use_anchors_ = true
 
 [node name="ColorPicker" type="ColorPicker" parent="Button"]
 visible = false
-layout_mode = 0
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -0.457944
+anchor_top = -2.22034
+anchor_right = -0.457944
+anchor_bottom = -2.22034
 offset_left = 182.0
 offset_top = -196.0
 offset_right = 480.0
@@ -205,14 +191,52 @@ edit_alpha = false
 picker_shape = 2
 metadata/_edit_use_anchors_ = true
 
-[node name="Button2" type="Button" parent="."]
-offset_right = 8.0
-offset_bottom = 8.0
-metadata/_edit_use_anchors_ = true
+[node name="ButtonSave" type="Button" parent="."]
+offset_left = 931.0
+offset_top = 333.0
+offset_right = 1054.0
+offset_bottom = 395.0
+script = ExtResource("4_gpdew")
 
-[connection signal="color_changed" from="ColorPickerButton" to="AnimatedSprite2D" method="_on_color_picker_button_color_changed"]
-[connection signal="color_changed" from="ColorPickerButton2" to="AnimatedSprite2D" method="_on_color_picker_button_2_color_changed"]
-[connection signal="color_changed" from="ColorPickerButton3" to="AnimatedSprite2D" method="_on_color_picker_button_3_color_changed"]
+[node name="CharacterSprite" type="AnimatedSprite2D" parent="."]
+texture_filter = 3
+material = SubResource("ShaderMaterial_3wxpe")
+position = Vector2(268, 44)
+scale = Vector2(9, 9)
+sprite_frames = SubResource("SpriteFrames_mniv8")
+autoplay = "default"
+centered = false
+script = ExtResource("3_5trcp")
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="."]
+texture_filter = 3
+offset_left = -573.0
+offset_top = 180.0
+offset_right = -61.0
+offset_bottom = 244.0
+
+[node name="SubViewport" type="SubViewport" parent="SubViewportContainer"]
+transparent_bg = true
+handle_input_locally = false
+canvas_item_default_texture_filter = 3
+size = Vector2i(512, 64)
+size_2d_override_stretch = true
+render_target_update_mode = 4
+
+[node name="TextureRect2" type="TextureRect" parent="SubViewportContainer/SubViewport"]
+texture_filter = 3
+material = SubResource("ShaderMaterial_uwche")
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -512.0
+offset_bottom = 64.0
+grow_horizontal = 0
+texture = ExtResource("2_iwkxb")
+script = ExtResource("5_xsigk")
+
 [connection signal="pressed" from="Button" to="Button" method="_on_pressed"]
-[connection signal="color_changed" from="Button/ColorPicker" to="AnimatedSprite2D" method="_on_color_picker_color_changed"]
 [connection signal="color_changed" from="Button/ColorPicker" to="Button" method="_on_color_picker_color_changed"]
+[connection signal="color_changed" from="Button/ColorPicker" to="CharacterSprite" method="_on_color_picker_color_changed"]
+[connection signal="pressed" from="ButtonSave" to="ButtonSave" method="_on_pressed"]
+[connection signal="pressed" from="ButtonSave" to="CharacterSprite" method="_on_button_save_pressed"]
