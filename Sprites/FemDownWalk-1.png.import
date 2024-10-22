@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://d2ul0jo1tqcba"
-path="res://.godot/imported/screenshot.png-13a0e8b64164d9a9958a4886dc4c9280.ctex"
+uid="uid://dnjdl1y2dc03"
+path="res://.godot/imported/FemDownWalk-1.png-146d6914651bb341b69d564e6695aa1d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://screen/screenshot.png"
-dest_files=["res://.godot/imported/screenshot.png-13a0e8b64164d9a9958a4886dc4c9280.ctex"]
+source_file="res://Sprites/FemDownWalk-1.png"
+dest_files=["res://.godot/imported/FemDownWalk-1.png-146d6914651bb341b69d564e6695aa1d.ctex"]
 
 [params]
 

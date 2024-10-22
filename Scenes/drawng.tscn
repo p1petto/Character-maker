@@ -1,0 +1,47 @@
+[gd_scene load_steps=7 format=3 uid="uid://bmy1btigmqow0"]
+
+[ext_resource type="Script" path="res://Scripts/drawing/drawng.gd" id="1_pyq24"]
+[ext_resource type="Script" path="res://Scripts/drawing/draw_grid.gd" id="2_te3jj"]
+[ext_resource type="Texture2D" uid="uid://dnjdl1y2dc03" path="res://Sprites/FemDownWalk-1.png" id="3_yfqn8"]
+[ext_resource type="Script" path="res://Scripts/drawing/draw_texture.gd" id="4_f5lj3"]
+[ext_resource type="Script" path="res://Scripts/drawing/Converter.gd" id="5_8l3et"]
+[ext_resource type="Script" path="res://Scripts/drawing/ShowPixels.gd" id="5_b3fim"]
+
+[node name="Drawng" type="Node2D"]
+texture_filter = 3
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(29, 16)
+zoom = Vector2(20, 20)
+
+[node name="Grid" type="Node2D" parent="."]
+script = ExtResource("2_te3jj")
+
+[node name="FemDownWalk-1" type="Sprite2D" parent="."]
+position = Vector2(90, 32)
+texture = ExtResource("3_yfqn8")
+
+[node name="Line2D" type="Line2D" parent="."]
+visible = false
+points = PackedVector2Array(5, 1, 12, 1)
+width = 1.0
+
+[node name="Draw" type="Node2D" parent="."]
+visible = false
+position = Vector2(28, 0)
+script = ExtResource("1_pyq24")
+
+[node name="Border" type="Sprite2D" parent="."]
+position = Vector2(-18, 9)
+centered = false
+script = ExtResource("4_f5lj3")
+
+[node name="DrawedObject" type="Node2D" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="DrawedObject"]
+centered = false
+script = ExtResource("5_b3fim")
+
+[node name="Converter" type="Node2D" parent="DrawedObject"]
+script = ExtResource("5_8l3et")
+img = ExtResource("3_yfqn8")

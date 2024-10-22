@@ -1,16 +1,11 @@
-[gd_scene load_steps=20 format=3 uid="uid://bfcphxa42tny2"]
+[gd_scene load_steps=21 format=3 uid="uid://bfcphxa42tny2"]
 
+[ext_resource type="Texture2D" uid="uid://b8t16qg47w3oe" path="res://Shader/583157425c04515880bcdb49.jpg" id="1_rmjoo"]
 [ext_resource type="Texture2D" uid="uid://p6tehafnukq0" path="res://Sprites/FemDownIdle.png" id="2_iwkxb"]
 [ext_resource type="Script" path="res://Scripts/AnimatedSprite2D.gd" id="3_5trcp"]
 [ext_resource type="Script" path="res://Scripts/ButtonSave.gd" id="4_gpdew"]
 [ext_resource type="Script" path="res://Scripts/ButtonColor.gd" id="5_553nq"]
 [ext_resource type="Script" path="res://Scripts/TextureRect.gd" id="5_xsigk"]
-
-[sub_resource type="Theme" id="Theme_dexsy"]
-Button/styles/normal = null
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4nai1"]
-bg_color = Color(0.780392, 0.780392, 0.780392, 1)
 
 [sub_resource type="Shader" id="Shader_7k4lf"]
 code = "shader_type canvas_item;
@@ -150,6 +145,12 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="Theme" id="Theme_dexsy"]
+Button/styles/normal = null
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4nai1"]
+bg_color = Color(0.780392, 0.780392, 0.780392, 1)
+
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_uwche"]
 shader = SubResource("Shader_7k4lf")
 shader_parameter/oldcolor1 = Color(0.780392, 0.780392, 0.780392, 1)
@@ -165,6 +166,21 @@ shader_parameter/newcolor5 = Color(0.494118, 0.494118, 0.494118, 1)
 
 [node name="CustomColorPicker" type="Node2D"]
 
+[node name="583157425c04515880Bcdb49" type="Sprite2D" parent="."]
+position = Vector2(1954, -37)
+scale = Vector2(0.348931, 0.299876)
+texture = ExtResource("1_rmjoo")
+
+[node name="CharacterSprite" type="AnimatedSprite2D" parent="."]
+texture_filter = 3
+material = SubResource("ShaderMaterial_3wxpe")
+position = Vector2(291, 43)
+scale = Vector2(9, 9)
+sprite_frames = SubResource("SpriteFrames_mniv8")
+autoplay = "default"
+centered = false
+script = ExtResource("3_5trcp")
+
 [node name="Button" type="Button" parent="."]
 offset_left = 58.0
 offset_top = 334.0
@@ -179,10 +195,10 @@ metadata/_edit_use_anchors_ = true
 visible = false
 layout_mode = 1
 anchors_preset = -1
-anchor_left = -0.457944
-anchor_top = -2.22034
-anchor_right = -0.457944
-anchor_bottom = -2.22034
+anchor_left = -0.635514
+anchor_top = -1.37288
+anchor_right = -0.635514
+anchor_bottom = -1.37288
 offset_left = 182.0
 offset_top = -196.0
 offset_right = 480.0
@@ -192,21 +208,11 @@ picker_shape = 2
 metadata/_edit_use_anchors_ = true
 
 [node name="ButtonSave" type="Button" parent="."]
-offset_left = 931.0
+offset_left = 760.0
 offset_top = 333.0
-offset_right = 1054.0
+offset_right = 883.0
 offset_bottom = 395.0
 script = ExtResource("4_gpdew")
-
-[node name="CharacterSprite" type="AnimatedSprite2D" parent="."]
-texture_filter = 3
-material = SubResource("ShaderMaterial_3wxpe")
-position = Vector2(268, 44)
-scale = Vector2(9, 9)
-sprite_frames = SubResource("SpriteFrames_mniv8")
-autoplay = "default"
-centered = false
-script = ExtResource("3_5trcp")
 
 [node name="SubViewportContainer" type="SubViewportContainer" parent="."]
 texture_filter = 3
@@ -236,7 +242,8 @@ texture = ExtResource("2_iwkxb")
 script = ExtResource("5_xsigk")
 
 [connection signal="pressed" from="Button" to="Button" method="_on_pressed"]
-[connection signal="color_changed" from="Button/ColorPicker" to="Button" method="_on_color_picker_color_changed"]
 [connection signal="color_changed" from="Button/ColorPicker" to="CharacterSprite" method="_on_color_picker_color_changed"]
-[connection signal="pressed" from="ButtonSave" to="ButtonSave" method="_on_pressed"]
+[connection signal="color_changed" from="Button/ColorPicker" to="Button" method="_on_color_picker_color_changed"]
+[connection signal="button_up" from="ButtonSave" to="ButtonSave" method="_on_button_up"]
 [connection signal="pressed" from="ButtonSave" to="CharacterSprite" method="_on_button_save_pressed"]
+[connection signal="pressed" from="ButtonSave" to="ButtonSave" method="_on_pressed"]
