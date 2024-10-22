@@ -11,20 +11,11 @@
 texture_filter = 3
 
 [node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(29, 16)
-zoom = Vector2(20, 20)
+position = Vector2(32, 32)
 
 [node name="Grid" type="Node2D" parent="."]
-script = ExtResource("2_te3jj")
-
-[node name="FemDownWalk-1" type="Sprite2D" parent="."]
-position = Vector2(90, 32)
-texture = ExtResource("3_yfqn8")
-
-[node name="Line2D" type="Line2D" parent="."]
 visible = false
-points = PackedVector2Array(5, 1, 12, 1)
-width = 1.0
+script = ExtResource("2_te3jj")
 
 [node name="Draw" type="Node2D" parent="."]
 visible = false
@@ -45,3 +36,12 @@ script = ExtResource("5_b3fim")
 [node name="Converter" type="Node2D" parent="DrawedObject"]
 script = ExtResource("5_8l3et")
 img = ExtResource("3_yfqn8")
+
+[node name="FemDownWalk-1" type="Sprite2D" parent="."]
+position = Vector2(9, 24)
+texture = ExtResource("3_yfqn8")
+
+[node name="Line2D" type="Line2D" parent="."]
+points = PackedVector2Array(5, 0.5, 9, 0.5, 9, 16.5, 7, 16.5, 1.5, 12.5, 1.5, 10.877, 1.5, 8, 1.5, 5.562, 1.5, 3.5)
+closed = true
+width = 1.0
