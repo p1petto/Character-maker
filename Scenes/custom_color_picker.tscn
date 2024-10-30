@@ -151,7 +151,7 @@ Button/styles/normal = null
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4nai1"]
 bg_color = Color(0.780392, 0.780392, 0.780392, 1)
 
-[sub_resource type="Shader" id="Shader_4yqv8"]
+[sub_resource type="Shader" id="Shader_65h1y"]
 code = "shader_type canvas_item;
 uniform vec4 oldcolor1 : source_color;
 uniform vec4 oldcolor2 : source_color;
@@ -213,7 +213,7 @@ void fragment() {
 }"
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_uwche"]
-shader = SubResource("Shader_4yqv8")
+shader = SubResource("Shader_65h1y")
 shader_parameter/oldcolor1 = Color(0.780392, 0.780392, 0.780392, 1)
 shader_parameter/oldcolor2 = Color(0.192157, 0.192157, 0.192157, 1)
 shader_parameter/oldcolor3 = Color(0.396078, 0.396078, 0.396078, 1)

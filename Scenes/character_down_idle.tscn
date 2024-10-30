@@ -1,26 +1,54 @@
-[gd_scene load_steps=15 format=3 uid="uid://bpsiuaeo6up0n"]
+[gd_scene load_steps=21 format=3 uid="uid://bpsiuaeo6up0n"]
 
 [ext_resource type="Script" path="res://Scripts/drawing/Body_part_slider.gd" id="1_2mwov"]
 [ext_resource type="Script" path="res://Scripts/drawing/changing_shape_by_animation.gd" id="2_bmpj0"]
 [ext_resource type="Script" path="res://Scripts/drawing/arms_idle_down.gd" id="3_3qru3"]
+[ext_resource type="Script" path="res://Scripts/drawing/changing_shape_by_animation_arms.gd" id="3_n51ot"]
+[ext_resource type="Script" path="res://Scripts/drawing/changing_position_arms_down_idle.gd" id="3_q77gu"]
 [ext_resource type="Texture2D" uid="uid://bgunortne1vs3" path="res://Sprites/Body parts/Arms/arms-0.png" id="4_bejqf"]
+[ext_resource type="Texture2D" uid="uid://bciaklln1vesm" path="res://Sprites/Body parts/Arms/arms--1.png" id="4_wsg2g"]
 [ext_resource type="PackedScene" uid="uid://diswjr5bpm343" path="res://Scenes/body_part.tscn" id="5_fxabk"]
+[ext_resource type="Texture2D" uid="uid://tnhxvws20uyf" path="res://Sprites/Body parts/Arms/arms-1.png" id="5_o15kv"]
 [ext_resource type="Texture2D" uid="uid://j0r1ycwa0eux" path="res://Sprites/Body parts/Legs/legs--1.png" id="6_bcmyx"]
 [ext_resource type="Texture2D" uid="uid://cnr0nyipeswjb" path="res://Sprites/Body parts/Legs/legs-0.png" id="7_piio5"]
 [ext_resource type="Texture2D" uid="uid://d0vhl0khc63hj" path="res://Sprites/Body parts/Legs/legs-1.png" id="8_ee3pv"]
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_kke0d"]
+atlas = ExtResource("4_wsg2g")
+region = Rect2(0, 0, 64, 64)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_ia3ue"]
 atlas = ExtResource("4_bejqf")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8x01j"]
+atlas = ExtResource("5_o15kv")
 region = Rect2(0, 0, 64, 64)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_yb13x"]
 animations = [{
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_kke0d")
+}],
+"loop": true,
+"name": &"idle_down_arms_-1",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_ia3ue")
 }],
 "loop": true,
-"name": &"idle_arms_0",
+"name": &"idle_down_arms_0",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8x01j")
+}],
+"loop": true,
+"name": &"idle_down_arms_1",
 "speed": 5.0
 }]
 
@@ -43,7 +71,7 @@ animations = [{
 "texture": SubResource("AtlasTexture_l33sn")
 }],
 "loop": true,
-"name": &"idle_legs_-1",
+"name": &"idle_down_legs_-1",
 "speed": 5.0
 }, {
 "frames": [{
@@ -51,7 +79,7 @@ animations = [{
 "texture": SubResource("AtlasTexture_is06p")
 }],
 "loop": true,
-"name": &"idle_legs_0",
+"name": &"idle_down_legs_0",
 "speed": 5.0
 }, {
 "frames": [{
@@ -59,7 +87,7 @@ animations = [{
 "texture": SubResource("AtlasTexture_b2bnp")
 }],
 "loop": true,
-"name": &"idle_legs_1",
+"name": &"idle_down_legs_1",
 "speed": 5.0
 }]
 
@@ -154,9 +182,9 @@ parent_node = NodePath("../../Body")
 [node name="VBoxContainerLegs" type="VBoxContainer" parent="."]
 layout_direction = 1
 offset_left = 43.0
-offset_top = 51.0
+offset_top = 53.0
 offset_right = 218.0
-offset_bottom = 207.0
+offset_bottom = 84.0
 scale = Vector2(0.0971583, 0.0958879)
 size_flags_vertical = 0
 size_flags_stretch_ratio = 0.0
@@ -169,6 +197,30 @@ max_value = 1.0
 script = ExtResource("2_bmpj0")
 parent_node = NodePath("../../Legs")
 
+[node name="VBoxContainerArms" type="VBoxContainer" parent="."]
+layout_direction = 1
+offset_left = 43.0
+offset_top = 45.0
+offset_right = 218.0
+offset_bottom = 97.0
+scale = Vector2(0.0971583, 0.0958879)
+size_flags_vertical = 0
+size_flags_stretch_ratio = 0.0
+theme_override_constants/separation = 20
+
+[node name="HSlider" type="HSlider" parent="VBoxContainerArms" node_paths=PackedStringArray("parent_node")]
+layout_mode = 2
+min_value = -1.0
+max_value = 1.0
+script = ExtResource("3_n51ot")
+parent_node = NodePath("../../Arms")
+
+[node name="HSlider2" type="HSlider" parent="VBoxContainerArms"]
+layout_mode = 2
+min_value = -1.0
+max_value = 1.0
+script = ExtResource("3_q77gu")
+
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(36, 26)
 
@@ -177,10 +229,17 @@ position = Vector2(31, 41)
 script = ExtResource("3_3qru3")
 coordsY = PackedInt32Array(40, 41)
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Arms"]
+[node name="RightArm" type="AnimatedSprite2D" parent="Arms"]
 texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_yb13x")
-animation = &"idle_arms_0"
+animation = &"idle_down_arms_0"
+
+[node name="LeftArm" type="AnimatedSprite2D" parent="Arms"]
+texture_filter = 1
+position = Vector2(-2, 0)
+sprite_frames = SubResource("SpriteFrames_yb13x")
+animation = &"idle_down_arms_0"
+flip_h = true
 
 [node name="Body" parent="." instance=ExtResource("5_fxabk")]
 position = Vector2(30, 31)
@@ -205,7 +264,7 @@ position = Vector2(31, 39)
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Legs"]
 texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_lb2he")
-animation = &"idle_legs_0"
+animation = &"idle_down_legs_0"
 
 [connection signal="value_changed" from="VBoxContainerHead/HSlider" to="VBoxContainerHead/HSlider" method="_on_value_changed"]
 [connection signal="value_changed" from="VBoxContainerHead/HSlider3" to="VBoxContainerHead/HSlider3" method="_on_value_changed"]
@@ -216,6 +275,8 @@ animation = &"idle_legs_0"
 [connection signal="value_changed" from="VBoxContainerBody/HSlider2" to="VBoxContainerBody/HSlider2" method="_on_value_changed"]
 [connection signal="value_changed" from="VBoxContainerBody/HSlider4" to="VBoxContainerBody/HSlider4" method="_on_value_changed"]
 [connection signal="value_changed" from="VBoxContainerLegs/HSlider" to="VBoxContainerLegs/HSlider" method="_on_value_changed"]
+[connection signal="value_changed" from="VBoxContainerArms/HSlider" to="VBoxContainerArms/HSlider" method="_on_value_changed"]
+[connection signal="value_changed" from="VBoxContainerArms/HSlider2" to="VBoxContainerArms/HSlider2" method="_on_value_changed"]
 [connection signal="timeout" from="Body/Timer" to="Arms" method="_on_timer_timeout"]
 [connection signal="timeout" from="Body/Timer" to="Body" method="_on_timer_timeout"]
 [connection signal="timeout" from="Head/Timer" to="Head" method="_on_timer_timeout"]
