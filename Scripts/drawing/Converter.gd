@@ -2,6 +2,8 @@ extends Node2D
 
 class_name Converter
 
+# Конвертирует изображение в матрицу 
+
 @export var img: Texture2D
 
 signal array_received
