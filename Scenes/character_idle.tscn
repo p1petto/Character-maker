@@ -1,6 +1,5 @@
-[gd_scene load_steps=15 format=3 uid="uid://bpsiuaeo6up0n"]
+[gd_scene load_steps=11 format=3 uid="uid://bpsiuaeo6up0n"]
 
-[ext_resource type="Script" path="res://Scripts/drawing/character_idle_animation.gd" id="1_rvh25"]
 [ext_resource type="PackedScene" uid="uid://diswjr5bpm343" path="res://Scenes/body_part.tscn" id="1_spy7e"]
 [ext_resource type="Script" path="res://Scripts/drawing/Body_part_slider.gd" id="2_c7t8p"]
 [ext_resource type="Texture2D" uid="uid://j0r1ycwa0eux" path="res://Sprites/Body parts/Legs/legs--1.png" id="3_km68u"]
@@ -47,157 +46,131 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="Animation" id="Animation_aiov2"]
-resource_name = "idle_down"
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Head:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.3, 0.6),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [Vector2(30, 14), Vector2(30, 13), Vector2(30, 14)]
-}
-
-[sub_resource type="Animation" id="Animation_uq7t2"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Head:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(30, 14)]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_smvb3"]
-_data = {
-"RESET": SubResource("Animation_uq7t2"),
-"idle_down": SubResource("Animation_aiov2")
-}
-
 [node name="Character_idle" type="Node2D"]
-script = ExtResource("1_rvh25")
+
+[node name="VBoxContainerHead" type="VBoxContainer" parent="."]
+layout_direction = 1
+offset_left = 43.0
+offset_top = 15.0
+offset_right = 218.0
+offset_bottom = 171.0
+scale = Vector2(0.0971583, 0.0958879)
+size_flags_vertical = 0
+size_flags_stretch_ratio = 0.0
+theme_override_constants/separation = 20
+
+[node name="HSlider" type="HSlider" parent="VBoxContainerHead" node_paths=PackedStringArray("parent_node")]
+layout_mode = 2
+min_value = -2.0
+max_value = 2.0
+script = ExtResource("2_c7t8p")
+num_point = 2
+parent_node = NodePath("../../Head")
+
+[node name="HSlider3" type="HSlider" parent="VBoxContainerHead" node_paths=PackedStringArray("parent_node")]
+layout_mode = 2
+min_value = -2.0
+max_value = 2.0
+script = ExtResource("2_c7t8p")
+num_point = 3
+parent_node = NodePath("../../Head")
+
+[node name="HSlider2" type="HSlider" parent="VBoxContainerHead" node_paths=PackedStringArray("parent_node")]
+layout_mode = 2
+min_value = -2.0
+max_value = 2.0
+script = ExtResource("2_c7t8p")
+num_point = 4
+parent_node = NodePath("../../Head")
+
+[node name="HSlider4" type="HSlider" parent="VBoxContainerHead" node_paths=PackedStringArray("parent_node")]
+layout_mode = 2
+min_value = -2.0
+max_value = 2.0
+script = ExtResource("2_c7t8p")
+num_point = 5
+parent_node = NodePath("../../Head")
+
+[node name="VBoxContainerBody" type="VBoxContainer" parent="."]
+layout_direction = 1
+offset_left = 43.0
+offset_top = 31.0
+offset_right = 218.0
+offset_bottom = 187.0
+scale = Vector2(0.0971583, 0.0958879)
+size_flags_vertical = 0
+size_flags_stretch_ratio = 0.0
+theme_override_constants/separation = 20
+
+[node name="HSlider" type="HSlider" parent="VBoxContainerBody" node_paths=PackedStringArray("parent_node")]
+layout_mode = 2
+min_value = -2.0
+max_value = 2.0
+script = ExtResource("2_c7t8p")
+num_point = 2
+parent_node = NodePath("../../Body")
+
+[node name="HSlider3" type="HSlider" parent="VBoxContainerBody" node_paths=PackedStringArray("parent_node")]
+layout_mode = 2
+min_value = -2.0
+max_value = 2.0
+script = ExtResource("2_c7t8p")
+num_point = 3
+parent_node = NodePath("../../Body")
+
+[node name="HSlider2" type="HSlider" parent="VBoxContainerBody" node_paths=PackedStringArray("parent_node")]
+layout_mode = 2
+min_value = -2.0
+max_value = 2.0
+script = ExtResource("2_c7t8p")
+num_point = 4
+parent_node = NodePath("../../Body")
+
+[node name="HSlider4" type="HSlider" parent="VBoxContainerBody" node_paths=PackedStringArray("parent_node")]
+layout_mode = 2
+min_value = -2.0
+max_value = 2.0
+script = ExtResource("2_c7t8p")
+num_point = 5
+parent_node = NodePath("../../Body")
+
+[node name="VBoxContainerLegs" type="VBoxContainer" parent="."]
+layout_direction = 1
+offset_left = 43.0
+offset_top = 51.0
+offset_right = 218.0
+offset_bottom = 207.0
+scale = Vector2(0.0971583, 0.0958879)
+size_flags_vertical = 0
+size_flags_stretch_ratio = 0.0
+theme_override_constants/separation = 20
+
+[node name="HSlider" type="HSlider" parent="VBoxContainerLegs" node_paths=PackedStringArray("parent_node")]
+layout_mode = 2
+min_value = -1.0
+max_value = 1.0
+script = ExtResource("6_rc47q")
+parent_node = NodePath("../../Legs")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(36, 26)
 
 [node name="Body" parent="." instance=ExtResource("1_spy7e")]
-position = Vector2(30, 30)
+position = Vector2(30, 31)
 array_points = PackedVector2Array(0, 0, 1, 0, 4, 3, 6, 4, 6, 7, 6, 13, 7, 19, 0, 19, -7, 19, -6, 13, -6, 7, -6, 4, -4, 3, -1, 0, 0, 0)
+coordsY = PackedInt32Array(30, 31)
 
-[node name="VBoxContainer2" type="VBoxContainer" parent="Body"]
-layout_direction = 1
-offset_left = 13.0
-offset_top = 1.0
-offset_right = 188.0
-offset_bottom = 157.0
-scale = Vector2(0.0971583, 0.0958879)
-size_flags_vertical = 0
-size_flags_stretch_ratio = 0.0
-theme_override_constants/separation = 20
-
-[node name="HSlider" type="HSlider" parent="Body/VBoxContainer2"]
-layout_mode = 2
-min_value = -2.0
-max_value = 2.0
-script = ExtResource("2_c7t8p")
-num_point = 2
-
-[node name="HSlider3" type="HSlider" parent="Body/VBoxContainer2"]
-layout_mode = 2
-min_value = -2.0
-max_value = 2.0
-script = ExtResource("2_c7t8p")
-num_point = 3
-
-[node name="HSlider2" type="HSlider" parent="Body/VBoxContainer2"]
-layout_mode = 2
-min_value = -2.0
-max_value = 2.0
-script = ExtResource("2_c7t8p")
-num_point = 4
-
-[node name="HSlider4" type="HSlider" parent="Body/VBoxContainer2"]
-layout_mode = 2
-min_value = -2.0
-max_value = 2.0
-script = ExtResource("2_c7t8p")
-num_point = 5
+[node name="Timer" type="Timer" parent="Body"]
+wait_time = 0.5
+autostart = true
 
 [node name="Head" parent="." instance=ExtResource("1_spy7e")]
-position = Vector2(30, 14)
+position = Vector2(30, 16)
 array_points = PackedVector2Array(0, 0, 4, 0, 7, 3, 7, 7, 7, 10, 7, 13, 2, 17, 0, 17, -2, 17, -7, 13, -7, 10, -7, 7, -7, 3, -4, 0, 0, 0)
+coordsY = PackedInt32Array(16, 15)
 
-[node name="VBoxContainer2" type="VBoxContainer" parent="Head"]
-layout_direction = 1
-offset_left = 13.0
-offset_top = 1.0
-offset_right = 188.0
-offset_bottom = 157.0
-scale = Vector2(0.0971583, 0.0958879)
-size_flags_vertical = 0
-size_flags_stretch_ratio = 0.0
-theme_override_constants/separation = 20
-
-[node name="HSlider" type="HSlider" parent="Head/VBoxContainer2"]
-layout_mode = 2
-min_value = -2.0
-max_value = 2.0
-script = ExtResource("2_c7t8p")
-num_point = 2
-
-[node name="HSlider3" type="HSlider" parent="Head/VBoxContainer2"]
-layout_mode = 2
-min_value = -2.0
-max_value = 2.0
-script = ExtResource("2_c7t8p")
-num_point = 3
-
-[node name="HSlider2" type="HSlider" parent="Head/VBoxContainer2"]
-layout_mode = 2
-min_value = -2.0
-max_value = 2.0
-script = ExtResource("2_c7t8p")
-num_point = 4
-
-[node name="HSlider4" type="HSlider" parent="Head/VBoxContainer2"]
-layout_mode = 2
-min_value = -2.0
-max_value = 2.0
-script = ExtResource("2_c7t8p")
-num_point = 5
-
-[node name="LeftLeg" parent="." instance=ExtResource("1_spy7e")]
-visible = false
-position = Vector2(28, 48)
-array_points = PackedVector2Array(3, 0, 2, 3, 1, 8, 0, 14, -3, 14, -3, 8, -3, 0)
-
-[node name="VBoxContainer2" type="VBoxContainer" parent="LeftLeg"]
-layout_direction = 1
-offset_left = 13.0
-offset_top = 1.0
-offset_right = 188.0
-offset_bottom = 157.0
-scale = Vector2(0.0971583, 0.0958879)
-size_flags_vertical = 0
-size_flags_stretch_ratio = 0.0
-theme_override_constants/separation = 20
-
-[node name="HSlider" type="HSlider" parent="LeftLeg/VBoxContainer2"]
-layout_mode = 2
-min_value = -2.0
-max_value = 2.0
-script = ExtResource("2_c7t8p")
-num_point = 4
+[node name="Timer" type="Timer" parent="Head"]
+autostart = true
 
 [node name="Legs" type="Node2D" parent="."]
 position = Vector2(31, 39)
@@ -207,42 +180,14 @@ texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_lb2he")
 animation = &"idle_legs_1"
 
-[node name="VBoxContainer2" type="VBoxContainer" parent="Legs"]
-layout_direction = 1
-offset_left = 12.0
-offset_top = 12.0
-offset_right = 187.0
-offset_bottom = 168.0
-scale = Vector2(0.0971583, 0.0958879)
-size_flags_vertical = 0
-size_flags_stretch_ratio = 0.0
-theme_override_constants/separation = 20
-
-[node name="HSlider" type="HSlider" parent="Legs/VBoxContainer2"]
-layout_mode = 2
-min_value = -1.0
-max_value = 1.0
-script = ExtResource("6_rc47q")
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-active = false
-libraries = {
-"": SubResource("AnimationLibrary_smvb3")
-}
-autoplay = "idle_down"
-
-[node name="Timer" type="Timer" parent="."]
-wait_time = 0.6
-autostart = true
-
-[connection signal="value_changed" from="Body/VBoxContainer2/HSlider" to="Body/VBoxContainer2/HSlider" method="_on_value_changed"]
-[connection signal="value_changed" from="Body/VBoxContainer2/HSlider3" to="Body/VBoxContainer2/HSlider3" method="_on_value_changed"]
-[connection signal="value_changed" from="Body/VBoxContainer2/HSlider2" to="Body/VBoxContainer2/HSlider2" method="_on_value_changed"]
-[connection signal="value_changed" from="Body/VBoxContainer2/HSlider4" to="Body/VBoxContainer2/HSlider4" method="_on_value_changed"]
-[connection signal="value_changed" from="Head/VBoxContainer2/HSlider" to="Head/VBoxContainer2/HSlider" method="_on_value_changed"]
-[connection signal="value_changed" from="Head/VBoxContainer2/HSlider3" to="Head/VBoxContainer2/HSlider3" method="_on_value_changed"]
-[connection signal="value_changed" from="Head/VBoxContainer2/HSlider2" to="Head/VBoxContainer2/HSlider2" method="_on_value_changed"]
-[connection signal="value_changed" from="Head/VBoxContainer2/HSlider4" to="Head/VBoxContainer2/HSlider4" method="_on_value_changed"]
-[connection signal="value_changed" from="LeftLeg/VBoxContainer2/HSlider" to="LeftLeg/VBoxContainer2/HSlider" method="_on_value_changed"]
-[connection signal="value_changed" from="Legs/VBoxContainer2/HSlider" to="Legs/VBoxContainer2/HSlider" method="_on_value_changed"]
-[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="value_changed" from="VBoxContainerHead/HSlider" to="VBoxContainerHead/HSlider" method="_on_value_changed"]
+[connection signal="value_changed" from="VBoxContainerHead/HSlider3" to="VBoxContainerHead/HSlider3" method="_on_value_changed"]
+[connection signal="value_changed" from="VBoxContainerHead/HSlider2" to="VBoxContainerHead/HSlider2" method="_on_value_changed"]
+[connection signal="value_changed" from="VBoxContainerHead/HSlider4" to="VBoxContainerHead/HSlider4" method="_on_value_changed"]
+[connection signal="value_changed" from="VBoxContainerBody/HSlider" to="VBoxContainerBody/HSlider" method="_on_value_changed"]
+[connection signal="value_changed" from="VBoxContainerBody/HSlider3" to="VBoxContainerBody/HSlider3" method="_on_value_changed"]
+[connection signal="value_changed" from="VBoxContainerBody/HSlider2" to="VBoxContainerBody/HSlider2" method="_on_value_changed"]
+[connection signal="value_changed" from="VBoxContainerBody/HSlider4" to="VBoxContainerBody/HSlider4" method="_on_value_changed"]
+[connection signal="value_changed" from="VBoxContainerLegs/HSlider" to="VBoxContainerLegs/HSlider" method="_on_value_changed"]
+[connection signal="timeout" from="Body/Timer" to="Body" method="_on_timer_timeout"]
+[connection signal="timeout" from="Head/Timer" to="Head" method="_on_timer_timeout"]

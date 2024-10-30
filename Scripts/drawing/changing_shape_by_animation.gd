@@ -1,6 +1,8 @@
 extends HSlider
 
-@onready var sprite = $"../../AnimatedSprite2D"
+@export var parent_node: Node 
+
+@onready var sprite = parent_node.get_node("AnimatedSprite2D")
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	pass # Replace with function body.
