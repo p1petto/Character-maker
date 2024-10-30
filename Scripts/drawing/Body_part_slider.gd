@@ -15,7 +15,7 @@ func _ready() -> void:
 	value_of_point = part_border.points[num_point]
 	count_of_points = part_border.get_point_count()
 	central_bottom_point = count_of_points / 2
-	mirror_point = count_of_points - num_point 
+	mirror_point = count_of_points - num_point - 1
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:

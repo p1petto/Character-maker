@@ -1,11 +1,124 @@
-[gd_scene load_steps=2 format=3 uid="uid://bpsiuaeo6up0n"]
+[gd_scene load_steps=3 format=3 uid="uid://bpsiuaeo6up0n"]
 
 [ext_resource type="PackedScene" uid="uid://diswjr5bpm343" path="res://Scenes/body_part.tscn" id="1_olubo"]
+[ext_resource type="Script" path="res://Scripts/drawing/Body_part_slider.gd" id="2_n7gx5"]
 
 [node name="Character" type="Node2D"]
 
 [node name="Body" parent="." instance=ExtResource("1_olubo")]
 position = Vector2(0, 15)
-array_points = PackedVector2Array(0, 0, 1, 0, 4, 3, 6, 4, 6, 7, 6, 13, 7, 19, 0, 19, -7, 19, -7, 19, -7, 19, -6, 13, -6, 7, -6, 4, -4, 3, -1, 0)
+array_points = PackedVector2Array(0, 0, 1, 0, 4, 3, 6, 4, 6, 7, 6, 13, 7, 19, 0, 19, -7, 19, -7, 19, -7, 19, -6, 13, -6, 7, -6, 4, -4, 3, -1, 0, 0, 0)
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="Body"]
+layout_direction = 1
+offset_left = 13.0
+offset_top = 1.0
+offset_right = 188.0
+offset_bottom = 157.0
+scale = Vector2(0.0971583, 0.0958879)
+size_flags_vertical = 0
+size_flags_stretch_ratio = 0.0
+theme_override_constants/separation = 20
+
+[node name="HSlider" type="HSlider" parent="Body/VBoxContainer2"]
+layout_mode = 2
+min_value = -2.0
+max_value = 2.0
+script = ExtResource("2_n7gx5")
+num_point = 2
+
+[node name="HSlider3" type="HSlider" parent="Body/VBoxContainer2"]
+layout_mode = 2
+min_value = -2.0
+max_value = 2.0
+script = ExtResource("2_n7gx5")
+num_point = 3
+
+[node name="HSlider2" type="HSlider" parent="Body/VBoxContainer2"]
+layout_mode = 2
+min_value = -2.0
+max_value = 2.0
+script = ExtResource("2_n7gx5")
+num_point = 4
+
+[node name="HSlider4" type="HSlider" parent="Body/VBoxContainer2"]
+layout_mode = 2
+min_value = -2.0
+max_value = 2.0
+script = ExtResource("2_n7gx5")
+num_point = 5
 
 [node name="Head" parent="." instance=ExtResource("1_olubo")]
+array_points = PackedVector2Array(0, 0, 4, 0, 7, 3, 7, 7, 7, 10, 7, 12.5, 2, 17, 0, 17, -2, 17, -7, 13, -7, 10, -7, 7, -7, 3, -4, 0, 0, 0)
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="Head"]
+layout_direction = 1
+offset_left = 13.0
+offset_top = 1.0
+offset_right = 188.0
+offset_bottom = 157.0
+scale = Vector2(0.0971583, 0.0958879)
+size_flags_vertical = 0
+size_flags_stretch_ratio = 0.0
+theme_override_constants/separation = 20
+
+[node name="HSlider" type="HSlider" parent="Head/VBoxContainer2"]
+layout_mode = 2
+min_value = -2.0
+max_value = 2.0
+script = ExtResource("2_n7gx5")
+num_point = 2
+
+[node name="HSlider3" type="HSlider" parent="Head/VBoxContainer2"]
+layout_mode = 2
+min_value = -2.0
+max_value = 2.0
+script = ExtResource("2_n7gx5")
+num_point = 3
+
+[node name="HSlider2" type="HSlider" parent="Head/VBoxContainer2"]
+layout_mode = 2
+min_value = -2.0
+max_value = 2.0
+script = ExtResource("2_n7gx5")
+num_point = 4
+
+[node name="HSlider4" type="HSlider" parent="Head/VBoxContainer2"]
+layout_mode = 2
+min_value = -2.0
+max_value = 2.0
+script = ExtResource("2_n7gx5")
+num_point = 5
+
+[node name="LeftLeg" parent="." instance=ExtResource("1_olubo")]
+visible = false
+position = Vector2(-4, 33)
+array_points = PackedVector2Array(3, 0, 2, 3, 1, 8, 0, 14, -3, 14, -3, 8, -3, 0)
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="LeftLeg"]
+layout_direction = 1
+offset_left = 13.0
+offset_top = 1.0
+offset_right = 188.0
+offset_bottom = 157.0
+scale = Vector2(0.0971583, 0.0958879)
+size_flags_vertical = 0
+size_flags_stretch_ratio = 0.0
+theme_override_constants/separation = 20
+
+[node name="HSlider" type="HSlider" parent="LeftLeg/VBoxContainer2"]
+layout_mode = 2
+min_value = -2.0
+max_value = 2.0
+script = ExtResource("2_n7gx5")
+num_point = 4
+
+[connection signal="value_changed" from="Body/VBoxContainer2/HSlider" to="Body/VBoxContainer2/HSlider" method="_on_value_changed"]
+[connection signal="value_changed" from="Body/VBoxContainer2/HSlider3" to="Body/VBoxContainer2/HSlider3" method="_on_value_changed"]
+[connection signal="value_changed" from="Body/VBoxContainer2/HSlider2" to="Body/VBoxContainer2/HSlider2" method="_on_value_changed"]
+[connection signal="value_changed" from="Body/VBoxContainer2/HSlider4" to="Body/VBoxContainer2/HSlider4" method="_on_value_changed"]
+[connection signal="value_changed" from="Head/VBoxContainer2/HSlider" to="Head/VBoxContainer2/HSlider" method="_on_value_changed"]
+[connection signal="value_changed" from="Head/VBoxContainer2/HSlider3" to="Head/VBoxContainer2/HSlider3" method="_on_value_changed"]
+[connection signal="value_changed" from="Head/VBoxContainer2/HSlider2" to="Head/VBoxContainer2/HSlider2" method="_on_value_changed"]
+[connection signal="value_changed" from="Head/VBoxContainer2/HSlider4" to="Head/VBoxContainer2/HSlider4" method="_on_value_changed"]
+[connection signal="value_changed" from="LeftLeg/VBoxContainer2/HSlider" to="LeftLeg/VBoxContainer2/HSlider" method="_on_value_changed"]
