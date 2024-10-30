@@ -1,22 +1,39 @@
-[gd_scene load_steps=11 format=3 uid="uid://bpsiuaeo6up0n"]
+[gd_scene load_steps=15 format=3 uid="uid://bpsiuaeo6up0n"]
 
-[ext_resource type="PackedScene" uid="uid://diswjr5bpm343" path="res://Scenes/body_part.tscn" id="1_spy7e"]
-[ext_resource type="Script" path="res://Scripts/drawing/Body_part_slider.gd" id="2_c7t8p"]
-[ext_resource type="Texture2D" uid="uid://j0r1ycwa0eux" path="res://Sprites/Body parts/Legs/legs--1.png" id="3_km68u"]
-[ext_resource type="Texture2D" uid="uid://cnr0nyipeswjb" path="res://Sprites/Body parts/Legs/legs-0.png" id="4_hp1nr"]
-[ext_resource type="Texture2D" uid="uid://d0vhl0khc63hj" path="res://Sprites/Body parts/Legs/legs-1.png" id="5_wj8pv"]
-[ext_resource type="Script" path="res://Scripts/drawing/changing_shape_by_animation.gd" id="6_rc47q"]
+[ext_resource type="Script" path="res://Scripts/drawing/Body_part_slider.gd" id="1_2mwov"]
+[ext_resource type="Script" path="res://Scripts/drawing/changing_shape_by_animation.gd" id="2_bmpj0"]
+[ext_resource type="Script" path="res://Scripts/drawing/arms_idle_down.gd" id="3_3qru3"]
+[ext_resource type="Texture2D" uid="uid://bgunortne1vs3" path="res://Sprites/Body parts/Arms/arms-0.png" id="4_bejqf"]
+[ext_resource type="PackedScene" uid="uid://diswjr5bpm343" path="res://Scenes/body_part.tscn" id="5_fxabk"]
+[ext_resource type="Texture2D" uid="uid://j0r1ycwa0eux" path="res://Sprites/Body parts/Legs/legs--1.png" id="6_bcmyx"]
+[ext_resource type="Texture2D" uid="uid://cnr0nyipeswjb" path="res://Sprites/Body parts/Legs/legs-0.png" id="7_piio5"]
+[ext_resource type="Texture2D" uid="uid://d0vhl0khc63hj" path="res://Sprites/Body parts/Legs/legs-1.png" id="8_ee3pv"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ia3ue"]
+atlas = ExtResource("4_bejqf")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_yb13x"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ia3ue")
+}],
+"loop": true,
+"name": &"idle_arms_0",
+"speed": 5.0
+}]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_l33sn"]
-atlas = ExtResource("3_km68u")
+atlas = ExtResource("6_bcmyx")
 region = Rect2(0, 0, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_is06p"]
-atlas = ExtResource("4_hp1nr")
+atlas = ExtResource("7_piio5")
 region = Rect2(0, 0, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_b2bnp"]
-atlas = ExtResource("5_wj8pv")
+atlas = ExtResource("8_ee3pv")
 region = Rect2(0, 0, 64, 64)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_lb2he"]
@@ -46,7 +63,7 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="Character_idle" type="Node2D"]
+[node name="Character_down_idle" type="Node2D"]
 
 [node name="VBoxContainerHead" type="VBoxContainer" parent="."]
 layout_direction = 1
@@ -63,7 +80,7 @@ theme_override_constants/separation = 20
 layout_mode = 2
 min_value = -2.0
 max_value = 2.0
-script = ExtResource("2_c7t8p")
+script = ExtResource("1_2mwov")
 num_point = 2
 parent_node = NodePath("../../Head")
 
@@ -71,7 +88,7 @@ parent_node = NodePath("../../Head")
 layout_mode = 2
 min_value = -2.0
 max_value = 2.0
-script = ExtResource("2_c7t8p")
+script = ExtResource("1_2mwov")
 num_point = 3
 parent_node = NodePath("../../Head")
 
@@ -79,7 +96,7 @@ parent_node = NodePath("../../Head")
 layout_mode = 2
 min_value = -2.0
 max_value = 2.0
-script = ExtResource("2_c7t8p")
+script = ExtResource("1_2mwov")
 num_point = 4
 parent_node = NodePath("../../Head")
 
@@ -87,7 +104,7 @@ parent_node = NodePath("../../Head")
 layout_mode = 2
 min_value = -2.0
 max_value = 2.0
-script = ExtResource("2_c7t8p")
+script = ExtResource("1_2mwov")
 num_point = 5
 parent_node = NodePath("../../Head")
 
@@ -106,7 +123,7 @@ theme_override_constants/separation = 20
 layout_mode = 2
 min_value = -2.0
 max_value = 2.0
-script = ExtResource("2_c7t8p")
+script = ExtResource("1_2mwov")
 num_point = 2
 parent_node = NodePath("../../Body")
 
@@ -114,7 +131,7 @@ parent_node = NodePath("../../Body")
 layout_mode = 2
 min_value = -2.0
 max_value = 2.0
-script = ExtResource("2_c7t8p")
+script = ExtResource("1_2mwov")
 num_point = 3
 parent_node = NodePath("../../Body")
 
@@ -122,7 +139,7 @@ parent_node = NodePath("../../Body")
 layout_mode = 2
 min_value = -2.0
 max_value = 2.0
-script = ExtResource("2_c7t8p")
+script = ExtResource("1_2mwov")
 num_point = 4
 parent_node = NodePath("../../Body")
 
@@ -130,7 +147,7 @@ parent_node = NodePath("../../Body")
 layout_mode = 2
 min_value = -2.0
 max_value = 2.0
-script = ExtResource("2_c7t8p")
+script = ExtResource("1_2mwov")
 num_point = 5
 parent_node = NodePath("../../Body")
 
@@ -149,27 +166,37 @@ theme_override_constants/separation = 20
 layout_mode = 2
 min_value = -1.0
 max_value = 1.0
-script = ExtResource("6_rc47q")
+script = ExtResource("2_bmpj0")
 parent_node = NodePath("../../Legs")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(36, 26)
 
-[node name="Body" parent="." instance=ExtResource("1_spy7e")]
+[node name="Arms" type="Node2D" parent="."]
+position = Vector2(31, 41)
+script = ExtResource("3_3qru3")
+coordsY = PackedInt32Array(40, 41)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Arms"]
+texture_filter = 1
+sprite_frames = SubResource("SpriteFrames_yb13x")
+animation = &"idle_arms_0"
+
+[node name="Body" parent="." instance=ExtResource("5_fxabk")]
 position = Vector2(30, 31)
 array_points = PackedVector2Array(0, 0, 1, 0, 4, 3, 6, 4, 6, 7, 6, 13, 7, 19, 0, 19, -7, 19, -6, 13, -6, 7, -6, 4, -4, 3, -1, 0, 0, 0)
 coordsY = PackedInt32Array(30, 31)
 
 [node name="Timer" type="Timer" parent="Body"]
-wait_time = 0.5
 autostart = true
 
-[node name="Head" parent="." instance=ExtResource("1_spy7e")]
+[node name="Head" parent="." instance=ExtResource("5_fxabk")]
 position = Vector2(30, 16)
 array_points = PackedVector2Array(0, 0, 4, 0, 7, 3, 7, 7, 7, 10, 7, 13, 2, 17, 0, 17, -2, 17, -7, 13, -7, 10, -7, 7, -7, 3, -4, 0, 0, 0)
 coordsY = PackedInt32Array(16, 15)
 
 [node name="Timer" type="Timer" parent="Head"]
+wait_time = 2.5
 autostart = true
 
 [node name="Legs" type="Node2D" parent="."]
@@ -178,7 +205,7 @@ position = Vector2(31, 39)
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Legs"]
 texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_lb2he")
-animation = &"idle_legs_1"
+animation = &"idle_legs_0"
 
 [connection signal="value_changed" from="VBoxContainerHead/HSlider" to="VBoxContainerHead/HSlider" method="_on_value_changed"]
 [connection signal="value_changed" from="VBoxContainerHead/HSlider3" to="VBoxContainerHead/HSlider3" method="_on_value_changed"]
@@ -189,5 +216,6 @@ animation = &"idle_legs_1"
 [connection signal="value_changed" from="VBoxContainerBody/HSlider2" to="VBoxContainerBody/HSlider2" method="_on_value_changed"]
 [connection signal="value_changed" from="VBoxContainerBody/HSlider4" to="VBoxContainerBody/HSlider4" method="_on_value_changed"]
 [connection signal="value_changed" from="VBoxContainerLegs/HSlider" to="VBoxContainerLegs/HSlider" method="_on_value_changed"]
+[connection signal="timeout" from="Body/Timer" to="Arms" method="_on_timer_timeout"]
 [connection signal="timeout" from="Body/Timer" to="Body" method="_on_timer_timeout"]
 [connection signal="timeout" from="Head/Timer" to="Head" method="_on_timer_timeout"]
