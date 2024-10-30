@@ -1,12 +1,55 @@
-[gd_scene load_steps=3 format=3 uid="uid://bpsiuaeo6up0n"]
+[gd_scene load_steps=11 format=3 uid="uid://bpsiuaeo6up0n"]
 
 [ext_resource type="PackedScene" uid="uid://diswjr5bpm343" path="res://Scenes/body_part.tscn" id="1_olubo"]
 [ext_resource type="Script" path="res://Scripts/drawing/Body_part_slider.gd" id="2_n7gx5"]
+[ext_resource type="Texture2D" uid="uid://j0r1ycwa0eux" path="res://Sprites/Body parts/Legs/legs--1.png" id="3_nr73a"]
+[ext_resource type="Texture2D" uid="uid://cnr0nyipeswjb" path="res://Sprites/Body parts/Legs/legs-0.png" id="3_oyfcv"]
+[ext_resource type="Texture2D" uid="uid://d0vhl0khc63hj" path="res://Sprites/Body parts/Legs/legs-1.png" id="3_rbpk3"]
+[ext_resource type="Script" path="res://Scripts/drawing/changing_shape_by_animation.gd" id="6_kfko4"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l33sn"]
+atlas = ExtResource("3_nr73a")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_is06p"]
+atlas = ExtResource("3_oyfcv")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b2bnp"]
+atlas = ExtResource("3_rbpk3")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_lb2he"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l33sn")
+}],
+"loop": true,
+"name": &"idle_legs_-1",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_is06p")
+}],
+"loop": true,
+"name": &"idle_legs_0",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b2bnp")
+}],
+"loop": true,
+"name": &"idle_legs_1",
+"speed": 5.0
+}]
 
 [node name="Character" type="Node2D"]
 
 [node name="Body" parent="." instance=ExtResource("1_olubo")]
-position = Vector2(0, 15)
+position = Vector2(-2, 15)
 array_points = PackedVector2Array(0, 0, 1, 0, 4, 3, 6, 4, 6, 7, 6, 13, 7, 19, 0, 19, -7, 19, -7, 19, -7, 19, -6, 13, -6, 7, -6, 4, -4, 3, -1, 0, 0, 0)
 
 [node name="VBoxContainer2" type="VBoxContainer" parent="Body"]
@@ -49,7 +92,8 @@ script = ExtResource("2_n7gx5")
 num_point = 5
 
 [node name="Head" parent="." instance=ExtResource("1_olubo")]
-array_points = PackedVector2Array(0, 0, 4, 0, 7, 3, 7, 7, 7, 10, 7, 12.5, 2, 17, 0, 17, -2, 17, -7, 13, -7, 10, -7, 7, -7, 3, -4, 0, 0, 0)
+position = Vector2(-2, -1)
+array_points = PackedVector2Array(0, 0, 4, 0, 7, 3, 7, 7, 7, 10, 7, 13, 2, 17, 0, 17, -2, 17, -7, 13, -7, 10, -7, 7, -7, 3, -4, 0, 0, 0)
 
 [node name="VBoxContainer2" type="VBoxContainer" parent="Head"]
 layout_direction = 1
@@ -113,6 +157,31 @@ max_value = 2.0
 script = ExtResource("2_n7gx5")
 num_point = 4
 
+[node name="Legs" type="Node2D" parent="."]
+position = Vector2(-1, 24)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Legs"]
+texture_filter = 1
+sprite_frames = SubResource("SpriteFrames_lb2he")
+animation = &"idle_legs_1"
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="Legs"]
+layout_direction = 1
+offset_left = 12.0
+offset_top = 12.0
+offset_right = 187.0
+offset_bottom = 168.0
+scale = Vector2(0.0971583, 0.0958879)
+size_flags_vertical = 0
+size_flags_stretch_ratio = 0.0
+theme_override_constants/separation = 20
+
+[node name="HSlider" type="HSlider" parent="Legs/VBoxContainer2"]
+layout_mode = 2
+min_value = -1.0
+max_value = 1.0
+script = ExtResource("6_kfko4")
+
 [connection signal="value_changed" from="Body/VBoxContainer2/HSlider" to="Body/VBoxContainer2/HSlider" method="_on_value_changed"]
 [connection signal="value_changed" from="Body/VBoxContainer2/HSlider3" to="Body/VBoxContainer2/HSlider3" method="_on_value_changed"]
 [connection signal="value_changed" from="Body/VBoxContainer2/HSlider2" to="Body/VBoxContainer2/HSlider2" method="_on_value_changed"]
@@ -122,3 +191,4 @@ num_point = 4
 [connection signal="value_changed" from="Head/VBoxContainer2/HSlider2" to="Head/VBoxContainer2/HSlider2" method="_on_value_changed"]
 [connection signal="value_changed" from="Head/VBoxContainer2/HSlider4" to="Head/VBoxContainer2/HSlider4" method="_on_value_changed"]
 [connection signal="value_changed" from="LeftLeg/VBoxContainer2/HSlider" to="LeftLeg/VBoxContainer2/HSlider" method="_on_value_changed"]
+[connection signal="value_changed" from="Legs/VBoxContainer2/HSlider" to="Legs/VBoxContainer2/HSlider" method="_on_value_changed"]
