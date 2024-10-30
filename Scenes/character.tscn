@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://bpsiuaeo6up0n"]
+
+[ext_resource type="PackedScene" uid="uid://diswjr5bpm343" path="res://Scenes/body_part.tscn" id="1_olubo"]
+
+[node name="Character" type="Node2D"]
+
+[node name="Body" parent="." instance=ExtResource("1_olubo")]
+position = Vector2(0, 15)
+array_points = PackedVector2Array(0, 0, 1, 0, 4, 3, 6, 4, 6, 7, 6, 13, 7, 19, 0, 19, -7, 19, -7, 19, -7, 19, -6, 13, -6, 7, -6, 4, -4, 3, -1, 0)
+
+[node name="Head" parent="." instance=ExtResource("1_olubo")]
