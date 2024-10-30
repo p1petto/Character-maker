@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://bfcphxa42tny2"]
+[gd_scene load_steps=22 format=3 uid="uid://bfcphxa42tny2"]
 
 [ext_resource type="Texture2D" uid="uid://b8t16qg47w3oe" path="res://Shader/583157425c04515880bcdb49.jpg" id="1_rmjoo"]
 [ext_resource type="Texture2D" uid="uid://p6tehafnukq0" path="res://Sprites/FemDownIdle.png" id="2_iwkxb"]
@@ -151,8 +151,69 @@ Button/styles/normal = null
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4nai1"]
 bg_color = Color(0.780392, 0.780392, 0.780392, 1)
 
+[sub_resource type="Shader" id="Shader_4yqv8"]
+code = "shader_type canvas_item;
+uniform vec4 oldcolor1 : source_color;
+uniform vec4 oldcolor2 : source_color;
+uniform vec4 oldcolor3 : source_color;
+uniform vec4 oldcolor4 : source_color;
+uniform vec4 oldcolor5 : source_color;
+
+uniform vec4 newcolor1 : source_color;
+uniform vec4 newcolor2 : source_color;
+uniform vec4 newcolor3 : source_color;
+uniform vec4 newcolor4 : source_color;
+uniform vec4 newcolor5 : source_color;
+
+
+void fragment() {
+	float r = 0.0;
+	float g = 0.0;
+	float b = 0.0;
+		
+    if(distance(COLOR, oldcolor1) < 0.1){
+        COLOR = newcolor1;
+	}
+	if(distance(COLOR, oldcolor2) < 0.1)
+	{
+		r = (COLOR.r - newcolor1.r) * 0.6 + newcolor1.r;
+		g = (COLOR.g - newcolor1.g) * 0.6 + newcolor1.g;
+		b = (COLOR.b - newcolor1.b) * 0.6 + newcolor1.b;
+		COLOR.r = r;
+		COLOR.g = g;
+		COLOR.b = b;
+    }
+	if(distance(COLOR, oldcolor3) < 0.1)
+	{
+		r = (COLOR.r - newcolor1.r) * 0.6 + newcolor1.r;
+		g = (COLOR.g - newcolor1.g) * 0.6 + newcolor1.g;
+		b = (COLOR.b - newcolor1.b) * 0.6 + newcolor1.b;
+		COLOR.r = r;
+		COLOR.g = g;
+		COLOR.b = b;
+    }
+	if(distance(COLOR, oldcolor4) < 0.1)
+	{
+		r = (COLOR.r - newcolor1.r) * 0.6 + newcolor1.r;
+		g = (COLOR.g - newcolor1.g) * 0.6 + newcolor1.g;
+		b = (COLOR.b - newcolor1.b) * 0.6 + newcolor1.b;
+		COLOR.r = r;
+		COLOR.g = g;
+		COLOR.b = b;
+    }
+	if(distance(COLOR, oldcolor5) < 0.1)
+	{
+		r = (COLOR.r - newcolor1.r) * 0.6 + newcolor1.r;
+		g = (COLOR.g - newcolor1.g) * 0.6 + newcolor1.g;
+		b = (COLOR.b - newcolor1.b) * 0.6 + newcolor1.b;
+		COLOR.r = r;
+		COLOR.g = g;
+		COLOR.b = b;
+    }
+}"
+
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_uwche"]
-shader = SubResource("Shader_7k4lf")
+shader = SubResource("Shader_4yqv8")
 shader_parameter/oldcolor1 = Color(0.780392, 0.780392, 0.780392, 1)
 shader_parameter/oldcolor2 = Color(0.192157, 0.192157, 0.192157, 1)
 shader_parameter/oldcolor3 = Color(0.396078, 0.396078, 0.396078, 1)
